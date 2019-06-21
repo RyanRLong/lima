@@ -1,0 +1,8 @@
+[package]
+name = "lima"
+version = "0.1.0"
+authors = ["Ryan Long <ryan@saltycatfish.com>"]
+edition = "2018"
+
+[dependencies]
+walkdir = "2.2"
