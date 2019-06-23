@@ -1,19 +1,26 @@
-use std::fs;
+use std::fs::File;
+use std::path::Path;
 
 use lima::file::comparator::{FileCreatedComparator, FileModifiedComparator};
 
 const TEMP_PATH: &str = "./temp";
+const TEMP_FILE: &str = "/test.txt";
 
 #[test]
 fn it_adds_two() {
     set_up();
-    let x: FileModifiedComparator::new(Path::new('.')).unwrap();
+    let path_string: String = TEMP_PATH.to_owned();
+    path_string.push_str(TEMP_FILE);
+    let path = Path::new(&path_string);
+    let x: FileModifiedComparator = FileModifiedComparator::new(path);
     assert!(true);
     tear_down();
 }
 
-fn create_test_file() {
-    
+fn create_test_file() -> std::io::Result<()> {
+    let mut file = File::create("test.txt").expect("Issue creating file:");
+    file.write_all(b"This is a test file").expect("Could not write to file");
+    Ok(())
 }
 
 fn create_test_directory(path: &str) -> std::io::Result<()> {
