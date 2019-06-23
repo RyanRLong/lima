@@ -1,13 +1,9 @@
 pub mod comparator {
-
-    extern crate walkdir;
-
     use std::cmp::Ordering;
     use std::fs::File;
     use std::io::Read;
 
     use std::path::Path;
-
 
     #[derive(Debug)]
     pub struct FileModifiedComparator<'a> {
